@@ -22,7 +22,6 @@ import java.util.function.Supplier;
 import io.pivotal.literx.domain.User;
 import reactor.core.publisher.Flux;
 import reactor.test.StepVerifier;
-import reactor.test.scheduler.VirtualTimeScheduler;
 
 /**
  * Learn how to use StepVerifier to test Mono, Flux or any other kind of
@@ -48,7 +47,7 @@ public class Part03StepVerifier {
 	// TODO Use StepVerifier to check that the flux parameter emits "foo" and "bar"
 	// elements then a RuntimeException error.
 	void expectFooBarError(Flux<String> flux) {
-		StepVerifier.create(flux).expectNext("foo", "bar").expectError(RuntimeException.class).verify();
+		StepVerifier.create(flux).expectNext("foo", "bar").verifyError(RuntimeException.class);
 
 	}
 
