@@ -1,18 +1,20 @@
 package io.pivotal.literx;
 
-import io.pivotal.literx.domain.User;
-import io.pivotal.literx.repository.ReactiveRepository;
-import io.pivotal.literx.repository.ReactiveUserRepository;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import reactor.core.publisher.Flux;
-import reactor.test.StepVerifier;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import io.pivotal.literx.domain.User;
+import io.pivotal.literx.repository.ReactiveRepository;
+import io.pivotal.literx.repository.ReactiveUserRepository;
+import reactor.core.publisher.Flux;
+import reactor.test.StepVerifier;
 
 /**
  * Learn how to control the demand.
@@ -94,7 +96,6 @@ public class Part06RequestTest {
 		StepVerifier.create(flux)
 				.expectNextCount(4)
 				.verifyComplete();
-
 		assertThat(logConsole.toString())
 				.isEqualTo("Starring:\n"
 						+ "Skyler White\n"
