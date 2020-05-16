@@ -96,7 +96,7 @@ public class Part06RequestTest {
 		StepVerifier.create(flux)
 				.expectNextCount(4)
 				.verifyComplete();
-		assertThat(logConsole.toString())
+		assertThat(logConsole.toString().replaceAll(threadInfos, ""))
 				.isEqualTo("Starring:\n"
 						+ "Skyler White\n"
 						+ "Jesse Pinkman\n"
